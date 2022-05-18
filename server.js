@@ -19,10 +19,10 @@ const sess = {
     })
 };
 app.use(session(sess));
-const helpers = require("./utils");
-const hbs = exphbs.create({ helpers })
+// const helpers = require("./utils");
+// const hbs = exphbs.create({ helpers })
 
-app.engine('handlebars', hbs.engine);
+// app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());

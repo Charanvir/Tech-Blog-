@@ -38,19 +38,19 @@ User.init(
         }
     },
     {
-        hooks: {
-            async newUser(newUserInfo) {
-                newUserInfo.password = await bcrypt.hash(newUserInfo.password, 15);
-                return newUserInfo
-            },
-            async updateUser(existingUserInfo) {
-                existingUserInfo.password = await bcrypt.hash(existingUserInfo.password, 15);
-            }
-        },
+        // hooks: {
+        //     async newUser(newUserInfo) {
+        //         newUserInfo.password = await bcrypt.hash(newUserInfo.password, 15);
+        //         return newUserInfo
+        //     },
+        //     async updateUser(existingUserInfo) {
+        //         existingUserInfo.password = await bcrypt.hash(existingUserInfo.password, 15);
+        //     }
+        // },
         sequelize,
         timestamps: false,
-        freezeTableName,
-        underscored,
+        freezeTableName: true,
+        underscored: true,
         modelName: 'user'
     }
 );
