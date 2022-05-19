@@ -17,7 +17,8 @@ Comment.init(
             refernces: {
                 model: 'user',
                 key: 'id'
-            }
+            },
+            onDelete: 'CASCADE'
         },
         post_id: {
             type: DataTypes.INTEGER,
@@ -25,7 +26,8 @@ Comment.init(
             references: {
                 model: 'post',
                 key: 'id'
-            }
+            },
+            onDelete: 'CASCADE'
         },
         comment_text: {
             type: DataTypes.STRING,
