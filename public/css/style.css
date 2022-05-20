@@ -16,10 +16,12 @@ header h1 {
 
 body {
     margin: auto;
+    background-color: lightcyan;
+
 }
 
 main {
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 
@@ -35,4 +37,27 @@ a {
 
 li {
     list-style: none;
+}
+
+.posts {
+    border: 1px solid black;
+    margin-top: 25px;
+    padding: 10px;
+    background-color: lightskyblue;
+}
+
+#postFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.posts a {
+    background-color: lightskyblue;
+}
+
+#homepageTitle {
+    text-align: center;
+    font-size: 50px;
 }

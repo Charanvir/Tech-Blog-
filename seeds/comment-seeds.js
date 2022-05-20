@@ -4,32 +4,32 @@ const commentData = [
     {
         user_id: 2,
         post_id: 1,
-        comment_text: 'Excited to see how the season goes. Lets go Farlo'
+        comment_text: 'HTML is where everyone should begin when learning how to program and code'
     },
     {
         user_id: 3,
         post_id: 2,
-        comment_text: 'Kdot does it again. What an album'
+        comment_text: 'Once you learn CSS, frameworks such as Bootstrap and Bulma become so crucial and time saving'
     },
     {
         user_id: 1,
         post_id: 3,
-        comment_text: 'Simrin is a great salesperson'
+        comment_text: 'Mastering JavaScript can really brgin your application or webpage to life.'
     },
     {
         user_id: 3,
         post_id: 4,
-        comment_text: 'Ive recommended you guys to so many people'
+        comment_text: 'Node.js is my go to when trying to create a server for my applications and projects'
     },
     {
         user_id: 1,
         post_id: 5,
-        comment_text: 'Its getting ridiculous. They have to start planning better'
+        comment_text: 'Express is a great framwork for backend developing for APIs and web applications'
     },
     {
         user_id: 2,
         post_id: 6,
-        comment_text: 'Finally a good decision from Chrysler'
+        comment_text: 'MySQL makes storing and using data for easy.'
     },
 ];
 
