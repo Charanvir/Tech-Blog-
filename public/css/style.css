@@ -1,3 +1,38 @@
-h1 {
-    color: red;
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: lightskyblue;
+}
+
+header h1 {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+body {
+    margin: auto;
+}
+
+main {
+    width: 50%;
+    margin: auto;
+}
+
+nav {
+    background-color: lightskyblue;
+}
+
+a {
+    background-color: lightskyblue;
+    color: black;
+    margin-right: 20px;
+}
+
+li {
+    list-style: none;
 }
