@@ -122,3 +122,42 @@ li {
     background-color: transparent;
     border: none;
 }
+
+#comment {
+    margin-top: 20px;
+    background-color: lightblue;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#comment h3 {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+#commentText {
+    font-size: 20px;
+}
+
+#commentAuthor {
+    font-size: 17px;
+}
+
+.singleComment {
+    border-bottom: 1px solid black;
+}
+
+.commentForm h2 {
+    text-align: center;
+}
+
+#commentTextArea {
+    width: 50%;
+    height: 100px;
+}
+
+.commentButton {
+    background-color: lightblue;
+    border-radius: 5%;
+    font-size: 20px;
+}

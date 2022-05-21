@@ -3,7 +3,6 @@ const { User, Post, Comment } = require("../models")
 const authorization = require('../utils/authorization')
 
 router.get("/", authorization, (req, res) => {
-    console.log(req.session.user_id)
     Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -33,7 +32,6 @@ router.get("/", authorization, (req, res) => {
     })
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
-            console.log(posts)
             res.render('dashboard', { posts, loggedIn: true })
         })
         .catch(err => {
