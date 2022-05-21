@@ -33,6 +33,7 @@ router.get("/", authorization, (req, res) => {
     })
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true }));
+            console.log(posts)
             res.render('dashboard', { posts, loggedIn: true })
         })
         .catch(err => {
