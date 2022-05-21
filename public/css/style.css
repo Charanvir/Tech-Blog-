@@ -117,3 +117,8 @@ li {
     display: flex;
     justify-content: space-between;
 }
+
+#logoutBtn {
+    background-color: transparent;
+    border: none;
+}
