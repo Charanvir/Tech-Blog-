@@ -1,16 +1,16 @@
 async function login(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#emailLogin').value.trim();
+    const user = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
 
-    if (!email || !password) {
+    if (!user || !password) {
         alert('Please enter your email and password')
     } else {
         const loginCheck = await fetch('/api/users/login', {
             method: 'post',
             body: JSON.stringify({
-                email,
+                user,
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
