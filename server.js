@@ -8,12 +8,15 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 require('dotenv').config();
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {},
+    secret: process.env.SESS_Secret,
+    cookie: {
+        // The session will expire after 15 minutes of inactivity, the user will have to log in again
+        expires: 15 * 60 * 1000
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db: sequelize
+        db: sequelize,
     })
 };
 app.use(session(sess));
