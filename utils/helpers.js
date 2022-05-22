@@ -2,7 +2,7 @@ module.exports = {
 
 
     formatDate: date => {
-        return `${new Date(date).getFullYear()}/${new Date(date).getMonth()}/${new Date(date).getDay()}`
+        return `${new Date(date).getFullYear()}/${new Date(date).getMonth() + 1}/${new Date(date).getDate()}`;
     }
 }
 
