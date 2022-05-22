@@ -1,5 +1,19 @@
-<h2 id="homepageTitle">My Blog Posts</h2>
+<h2 id="homepageTitle">My Dashboard</h2>
 
+<h3>Add a New Post</h3>
+<form class="addNewPost">
+    <div>
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="postTitle">
+    </div>
+    <div>
+        <label for="postText">Post Content</label>
+        <input type="text" id="postText" name="postText">
+    </div>
+    <button type="submit" class="newPostBtn">Create New Post</button>
+</form>
+
+{{#if posts.length}}
 <ul class="post-list">
     {{#each posts as |post|}}
     <li>
@@ -7,3 +21,6 @@
     </li>
     {{/each}}
 </ul>
+{{/if}}
+
+<script src="/js/addPost.js"></script>
