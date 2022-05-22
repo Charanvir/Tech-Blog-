@@ -36,7 +36,38 @@ async function editPost(event) {
         } else {
             alert("Post update failed, please try again")
         }
+    } else if (title && !post_text) {
+        const editedPost = await fetch(`/api/posts/${post_id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                title
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
+        if (editedPost.ok) {
+            document.location.reload();
+        } else {
+            alert("Post update failed, please try again")
+        }
+    } else if (!title && post_text) {
+        const editedPost = await fetch(`/api/posts/${post_id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                post_text
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (editedPost.ok) {
+            document.location.reload();
+        } else {
+            alert("Post update failed, please try again")
+        }
     }
 }
 
