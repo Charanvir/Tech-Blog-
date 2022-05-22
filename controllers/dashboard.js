@@ -40,4 +40,29 @@ router.get("/", authorization, (req, res) => {
         })
 })
 
+router.get("/edit/:id", (req, res) => {
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'title', 'created_at', 'id', 'post_text'
+        ],
+        include: [
+            {
+                model: User,
+                attributes: ['user']
+            }
+        ]
+    })
+        .then(postData => {
+            const posts = postData.get({ plain: true })
+            res.render('editDeletePost', { posts, loggedIn: true })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        })
+})
+
 module.exports = router
