@@ -40,11 +40,13 @@ User.init(
     {
         hooks: {
             // set up beforeCreate lifecycle "hook" functionality
+            // this hashes the password before it is created, so when a get route is made, the password displayed will be protected
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
             // set up beforeUpdate lifecycle "hook" functionality
+            // this hashes the password when it is updated
             async beforeUpdate(updatedUserData) {
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;

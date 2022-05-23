@@ -2,6 +2,7 @@ const router = require("express").Router();
 const sequelize = require("../config/connection")
 const { User, Post, Comment } = require('../models')
 
+// this route is for the homepage, it displays all existing posts and sends them to the homepage handlebars page
 router.get("/", (req, res) => {
     Post.findAll({
         attributes: [
@@ -20,7 +21,9 @@ router.get("/", (req, res) => {
         ]
     })
         .then(postData => {
+            // plain: true gives only the information that is necessary (the object requested in the findlAll request)
             const posts = postData.map(post => post.get({ plain: true }));
+            // By sending the loggedIn variable, it allows us to display content depending on the users login status
             res.render('homepage', { posts, loggedIn: req.session.loggedIn })
         })
         .catch(err => {
@@ -29,6 +32,7 @@ router.get("/", (req, res) => {
         })
 });
 
+// This route is when a user selects an individual post and a single post page is rendered
 router.get('/post/:id', (req, res) => {
     Post.findOne({
         attributes: [
@@ -70,6 +74,7 @@ router.get('/post/:id', (req, res) => {
         })
 })
 
+// this request is made when the login navigation link is selected. It will redirect to the homepage if the user is already logged in
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/')

@@ -4,6 +4,7 @@ const seedComment = require('./comment-seeds');
 
 const sequelize = require('../config/connection');
 
+// makes a connection to the MySQL database and runs the seeding functions
 const seedAll = async () => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');

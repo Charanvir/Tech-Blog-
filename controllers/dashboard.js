@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { User, Post, Comment } = require("../models")
 const authorization = require('../utils/authorization')
 
+// this is the request made when the dashboard route is selected. The authorization function ensures that only logged in users can view the dashboard, which is a tailored page that only displays
+// the users created posts
 router.get("/", authorization, (req, res) => {
     Post.findAll({
         where: {
@@ -40,7 +42,8 @@ router.get("/", authorization, (req, res) => {
         })
 })
 
-router.get("/edit/:id", (req, res) => {
+// This is the request made when the logged in user is trying to edit or delete a post that they have created. 
+router.get("/edit/:id", authorization, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models")
 
+// route to get all comments that are in the database
 router.get("/", (req, res) => {
     Comment.findAll({
         attributes: [
@@ -25,6 +26,7 @@ router.get("/", (req, res) => {
         })
 });
 
+// route to get a specific comment from the database using the URL for the id of the comment
 router.get("/:id", (req, res) => {
     Comment.findOne({
         where: {
@@ -58,6 +60,7 @@ router.get("/:id", (req, res) => {
         })
 });
 
+// route for creating a post
 router.post('/', (req, res) => {
     Comment.create({
         user_id: req.session.user_id,
@@ -71,6 +74,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// route for updating a comment
 router.put('/:id', (req, res) => {
     Comment.update(req.body, {
         where: {
@@ -90,6 +94,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// route for deleting a comment
 router.delete("/:id", (req, res) => {
     Comment.destroy({
         where: {

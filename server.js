@@ -21,13 +21,16 @@ const sess = {
 };
 app.use(session(sess));
 const helpers = require("./utils/helpers");
+// makes all helper functions accessible to handlebars
 const hbs = exphbs.create({ helpers })
 
+// makes handlebars the template being used by the app
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// ensures that the CSS and JS files in public are accessisble to use
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require("./controllers/"));

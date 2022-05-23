@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models")
 
+// route for getting all posts in the database
 router.get("/", (req, res) => {
     Post.findAll({
         attributes: [
@@ -34,6 +35,7 @@ router.get("/", (req, res) => {
         })
 });
 
+// route for getting a specific post from the database
 router.get("/:id", (req, res) => {
     Post.findOne({
         attributes: [
@@ -76,10 +78,12 @@ router.get("/:id", (req, res) => {
         })
 });
 
+// route for creating a new post
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         post_text: req.body.post_text,
+        // by using the session.user_id, the created post will be attributed with the logged in users id
         user_id: req.session.user_id
     })
         .then(postData => res.json(postData))
@@ -89,6 +93,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// route for updating a post
 router.put("/:id", (req, res) => {
     Post.update(req.body, {
         individualHooks: true,
@@ -109,6 +114,7 @@ router.put("/:id", (req, res) => {
         });
 });
 
+// route for deleting a route
 router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {

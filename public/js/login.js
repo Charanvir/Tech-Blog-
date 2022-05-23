@@ -1,9 +1,11 @@
+// function ran when the login form is entered, it checks whether the login credentials are correct, then redirects the user to their dashboard if the credentials are correct
 async function login(event) {
     event.preventDefault();
 
     const user = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
 
+    // both user and password must be entered
     if (!user || !password) {
         alert('Please enter your email and password')
     } else {
@@ -24,6 +26,7 @@ async function login(event) {
     }
 }
 
+// when the signup form is entered, this function creates a new user with the post user endpoint
 async function signup(event) {
     event.preventDefault();
 
@@ -31,6 +34,7 @@ async function signup(event) {
     const user = document.querySelector('#usernameSignup').value.trim();
     const password = document.querySelector('#passwordSignup').value.trim();
 
+    // ensures that email user and password are entered
     if (!email || !user || !password) {
         alert("Please enter all required fields to sign up")
     } else {

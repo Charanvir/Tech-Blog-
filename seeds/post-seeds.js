@@ -33,6 +33,7 @@ const postData = [
     },
 ];
 
+// creates all the posts at once 
 const seedPost = () => Post.bulkCreate(postData);
 
 module.exports = seedPost;

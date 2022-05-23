@@ -32,7 +32,7 @@ const commentData = [
         comment_text: 'MySQL makes storing and using data for easy.'
     },
 ];
-
+// creates the above comments all at once
 const seedComment = () => Comment.bulkCreate(commentData);
 
 module.exports = seedComment;

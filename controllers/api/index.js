@@ -9,3 +9,5 @@ router.use("/posts", postRoutes);
 router.use("/comments", commentRoutes);
 
 module.exports = router
+
+// this page determines the routes for user, post and comment data

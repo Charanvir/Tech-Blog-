@@ -1,3 +1,4 @@
+// deletes the post that the logged in user has created, 
 async function deletePost(event) {
     event.preventDefault();
 
@@ -12,9 +13,9 @@ async function deletePost(event) {
     } else {
         alert("There was a problem deleting the post. Please try again")
     }
-
-
 }
+
+// edits the post that the logged in user has created, the multiple if statements allow the user to edit the title and post_text, or just one or the other
 async function editPost(event) {
     event.preventDefault();
     const post_id = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1]

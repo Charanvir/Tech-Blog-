@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models")
 
+// route for getting all users in the database
 router.get("/", (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] }
@@ -12,6 +13,7 @@ router.get("/", (req, res) => {
         })
 });
 
+// route for getting a specific user
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: ['user', 'email', 'password'],
@@ -38,6 +40,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
+// route for creating a new user
 router.post('/', (req, res) => {
     User.create({
         user: req.body.user,
@@ -47,7 +50,9 @@ router.post('/', (req, res) => {
         .then(userData => {
             req.session.save(() => {
                 req.session.user_id = userData.id;
+                // when a new user is created, it saves the information on the session to be used later when creating post
                 req.session.username = userData.user
+                // ensures that when a user signup, they are redirected to the web page with a logged in status
                 req.session.loggedIn = true
 
                 res.json(userData)
@@ -59,6 +64,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// route for updating a users information
 router.put('/:id', (req, res) => {
     User.update(req.body, {
         individualHooks: true,
@@ -79,6 +85,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// route for deleting a user
 router.delete("/:id", (req, res) => {
     User.destroy({
         where: {
@@ -98,6 +105,7 @@ router.delete("/:id", (req, res) => {
         });
 })
 
+// route to check the database for existing users when they are attempting to log in
 router.post("/login", (req, res) => {
     User.findOne({
         where: {
@@ -109,7 +117,7 @@ router.post("/login", (req, res) => {
                 res.status(400).json({ message: 'No user with that email address!' });
                 return;
             }
-
+            // this will check whether the password entered is the same as from the database
             const validPassword = dbUserData.checkPassword(req.body.password);
 
             if (!validPassword) {
@@ -118,6 +126,7 @@ router.post("/login", (req, res) => {
             }
 
             req.session.save(() => {
+                // like signing up, the ID and user is saved to the session and returned with a logged in status
                 req.session.user_id = dbUserData.id;
                 req.session.username = dbUserData.user;
                 req.session.loggedIn = true;
@@ -127,6 +136,7 @@ router.post("/login", (req, res) => {
         });
 });
 
+// then the logout route is selected, the session will be ended and logged in status will become false, restricting what the logged out user can see and do
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {

@@ -1,4 +1,4 @@
-
+// then a new post is created, it will make a post request to the post route and create the post with the logged in users ID
 async function newPost(event) {
     event.preventDefault();
 
@@ -15,6 +15,7 @@ async function newPost(event) {
         });
 
         if (post.ok) {
+            // this will reload the page, so the new post is displayed
             document.location.reload();
         } else {
             alert("Please try again to create a post!")
